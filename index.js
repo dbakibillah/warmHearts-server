@@ -26,7 +26,7 @@ app.use(cookieParser());
 
 // Basic route
 app.get("/", (req, res) => {
-    res.send("aastha server is running...");
+    res.send("warmHearts server is running...");
 });
 
 //! Use routes

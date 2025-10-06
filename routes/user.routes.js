@@ -20,27 +20,10 @@ router.get("/user", async (req, res) => {
 });
 
 // Get single user by email
-router.get("/singleuser", async (req, res) => {
+router.get("/currentUser", async (req, res) => {
     const { email } = req.query;
-    try {
-        const user = await userCollection.findOne({ email });
-        if (!user) {
-            return res.status(404).json({
-                success: false,
-                message: "User not found",
-            });
-        }
-        return res.status(200).json({
-            success: true,
-            data: user,
-        });
-    } catch (error) {
-        return res.status(500).json({
-            success: false,
-            message: "Server error",
-            error: error.message,
-        });
-    }
+    const user = await userCollection.findOne({ email });
+    res.send(user);
 });
 
 // Create new user
@@ -59,7 +42,6 @@ router.post("/users", async (req, res) => {
         }
 
         user.role = "user"; // Default role
-        
 
         const result = await userCollection.insertOne(user);
         return res.status(201).json({
