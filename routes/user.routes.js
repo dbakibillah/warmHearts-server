@@ -3,7 +3,7 @@ const router = express.Router();
 const { ObjectId } = require("mongodb");
 const { client } = require("../config/db");
 //! user database
-const userCollection = client.db("petVerse").collection("users");
+const userCollection = client.db("warmHearts").collection("users");
 
 // Get all users
 router.get("/users", async (req, res) => {
@@ -58,10 +58,8 @@ router.post("/users", async (req, res) => {
             });
         }
 
-        // Add default pet array if not provided
-        if (!user.pets) {
-            user.pets = [];
-        }
+        user.role = "user"; // Default role
+        
 
         const result = await userCollection.insertOne(user);
         return res.status(201).json({
