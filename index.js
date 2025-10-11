@@ -9,6 +9,7 @@ const port = process.env.PORT || 5000;
 const authRoutes = require("./routes/auth.routes");
 const userRoutes = require("./routes/user.routes");
 const foodRoutes = require("./routes/food.routes");
+const medicineRoutes = require("./routes/medicine.routes");
 
 // Import database connection
 const { connectToDatabase } = require("./config/db");
@@ -34,6 +35,7 @@ app.get("/", (req, res) => {
 app.use("/", authRoutes);
 app.use("/", userRoutes);
 app.use("/", foodRoutes);
+app.use("/", medicineRoutes);
 
 
 // Connect to database and start server
