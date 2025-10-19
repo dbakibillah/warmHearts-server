@@ -10,7 +10,7 @@ const appointmentCollection = client
     .collection("appointments");
 
 // Get all appointments
-router.get("/appointments", async (req, res) => {
+router.get("/appointments", verifyToken, async (req, res) => {
     const cursor = appointmentCollection.find();
     const result = await cursor.toArray();
     res.send(result);
