@@ -10,6 +10,7 @@ const authRoutes = require("./routes/auth.routes");
 const userRoutes = require("./routes/user.routes");
 const foodRoutes = require("./routes/food.routes");
 const medicineRoutes = require("./routes/medicine.routes");
+const appointmentRoutes = require("./routes/appointment.routes");
 
 // Import database connection
 const { connectToDatabase } = require("./config/db");
@@ -36,6 +37,7 @@ app.use("/", authRoutes);
 app.use("/", userRoutes);
 app.use("/", foodRoutes);
 app.use("/", medicineRoutes);
+app.use("/", appointmentRoutes);
 
 
 // Connect to database and start server
